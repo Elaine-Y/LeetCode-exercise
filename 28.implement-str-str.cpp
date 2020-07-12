@@ -46,15 +46,13 @@
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-       if(needle.length()==0) {
-         return 0;
-       }
-       std::size_t found = haystack.find(needle);
-       if (found != std::string::npos) {
-         return found;
-       } else {
-         return -1;
-       }
+      if (needle.empty()) return 0;
+      std::size_t found = haystack.find(needle);
+      if(found!=std::string::npos) {
+        return found;
+      } else {
+        return -1;
+      }
     }
 };
 // @lc code=end
