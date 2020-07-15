@@ -52,6 +52,7 @@
  * };
  */
 class Solution {
+/*
 public:
     int depth(TreeNode* root) {
       if (!root) return 0;
@@ -73,6 +74,31 @@ public:
 
         return ans;
     }
+*/
+public:
+  vector<vector<int>> levelOrderBottom(TreeNode* root) {
+    vector<vector<int>> ret;
+    if (root == nullptr) return ret;
+    queue<TreeNode*> q;
+    q.push(root);
+    while(!q.empty()) {
+      int cur_size = q.size();
+      ret.push_back(vector<int>());
+      for (int i = 0; i < cur_size; ++i) {
+        auto node = q.front();
+        q.pop();
+        ret.back().push_back(node->val);
+        if(node->left) {
+          q.push(node->left);
+        }
+        if(node->right) {
+          q.push(node->right);
+        }
+      }
+    }
+    reverse(ret.begin(), ret.end());
+    return ret;
+  }
 };
 // @lc code=end
 
